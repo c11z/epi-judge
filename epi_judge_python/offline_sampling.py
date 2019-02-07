@@ -1,5 +1,6 @@
 import functools
-
+import random
+from typing import List
 from test_framework import generic_test
 from test_framework.random_sequence_checker import (
     binomial_coefficient, check_sequence_is_uniformly_random,
@@ -7,9 +8,22 @@ from test_framework.random_sequence_checker import (
 from test_framework.test_utils import enable_executor_hook
 
 
-def random_sampling(k, A):
-    # TODO - you fill in here.
-    return
+# reorder A so that the first k elements represents an
+# equally weighted subset of the elements if A
+# strategy is rangomly choose and swap
+# O(k) time complexity O(1) space, since we make k calls
+# to the random function and swaps
+def random_sampling(k: int, A: List[int]) -> None:
+    for i in range(k):
+        select = random.randint(i, len(A) - 1)
+        A[i], A[select] = A[select], A[i]
+    return None
+
+
+# base solution from book is identical
+# here is a more pythonic solution
+def random_sampling_pythonic(k, A):
+    A[:] = random.sample(A, k)
 
 
 @enable_executor_hook
