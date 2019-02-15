@@ -1,9 +1,11 @@
+from list_node import ListNode
 from test_framework import generic_test
 
 
-def search_list(L, key):
-    # TODO - you fill in here.
-    return None
+def search_list(L: ListNode, key: int) -> ListNode:
+    while L and L.data != key:
+        L = L.next
+    return L
 
 
 def search_list_wrapper(L, key):
@@ -11,7 +13,9 @@ def search_list_wrapper(L, key):
     return result.data if result else -1
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     exit(
         generic_test.generic_test_main(
-            "search_in_list.py", 'search_in_list.tsv', search_list_wrapper))
+            "search_in_list.py", "search_in_list.tsv", search_list_wrapper
+        )
+    )
