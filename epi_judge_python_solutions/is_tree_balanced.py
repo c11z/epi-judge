@@ -1,7 +1,7 @@
 import collections
 
 from test_framework import generic_test
-
+from binary_tree_node import BinaryTreeNode
 
 def is_balanced_binary_tree(tree):
 
